@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`flex gap-x-20 h-screen flex-col md:flex-row md:overflow-hidden ${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-tl from-slate-200 to-slate-50`}
+        className={`flex gap-x-20 h-screen flex-col md:flex-row md:overflow-hidden ${geistSans.variable} ${geistMono.variable} antialiased bg-[#f1e5da] text-[#023E3B]`}
       >
         <div className="w-full flex-none md:w-64">
           <Navbar/>

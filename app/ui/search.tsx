@@ -25,9 +25,9 @@ export default function SearchBar({ placeholder }: { placeholder: string } ) {
     return (
         <>
             <div className="m-10 flex flex-row">
-                <div className="-solid-gray flex flex-row bg-gray-200 w-[70%] h-[40px] rounded-full pl-1">
-                    <MagnifyingGlassIcon className="w-[30px] opacity-[0.5]"/>
-                    <input type="text" className="flex-1 pl-2 focus:outline-none" placeholder={placeholder}
+                <div className="-solid-gray flex flex-row bg-[#8d8d8d] w-[70%] h-[40px] rounded-full pl-1">
+                    <MagnifyingGlassIcon className="w-[30px] opacity-[0.5] text-[#f1e5da]"/>
+                    <input type="text" className="text-[#f1e5da] flex-1 pl-2 focus:outline-none" placeholder={placeholder}
                     onChange={(e) => {
                         handleSearch(e.target.value);
                     }}

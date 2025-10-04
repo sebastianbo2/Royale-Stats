@@ -18,9 +18,9 @@ const links = [
 export default function Navbar() {
     return (
         <>
-            <div className="flex w-[120%] h-full flex-col gap-y-3 px-3 py-4 md:px-2 bg-blue-50">
+            <div className="flex w-[120%] h-full flex-col gap-y-3 px-3 py-4 md:px-2 bg-[#E0794E]">
                 {/* decoration */}
-                <div className="select-none text-[40px] text-center font-bold bg-gradient-to-r from-rose-600 to-cyan-400 bg-clip-text text-transparent">
+                <div className="select-none text-[40px] text-center font-bold bg-[#023E3B] bg-clip-text text-transparent">
                     Royale Stats
                 </div>
                 {links.map((link) => {
@@ -29,7 +29,7 @@ export default function Navbar() {
                             key={link.name}
                             href={link.href}
                             // hover:bg-gradient-to-r hover:from-rose-600 hover:to-cyan-400 hover:bg-clip-text hover:text-transparent
-                            className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-cyan-100 hover:font-bold md:flex-none md:justify-start md:p-2 md:px-3"
+                            className="text-[#688e8f] flex h-[48px] grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium bg-[#f1e5da] hover:opacity-[0.7] hover:text-[#023E3B] md:flex-none md:justify-start md:p-2 md:px-3"
                         >
                             <p className="hidden md:block">=&gt; {link.name}</p>
                         </Link>

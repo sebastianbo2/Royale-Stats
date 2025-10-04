@@ -78,7 +78,7 @@ export default async function PlayerPage({ playerId }: PlayerPageProps) {
             <div className="p-8 font-mono">
                 {/* <Image src={leagueImageId} width={100} height={300} alt="Image"/> */}
 
-                <div className="rounded-2xl p-5 shadow-xl border-opacity-10">
+                <div className="rounded-2xl p-5 shadow-xl border-opacity-10 bg-[#E6D3C6]">
                     <p className="font-bold text-3xl">{data.name}</p>
                     <p className="opacity-[0.5]">{data.tag}</p>
                     <div>
@@ -96,16 +96,16 @@ export default async function PlayerPage({ playerId }: PlayerPageProps) {
                 </div>
 
                 <div className="flex flex-row justify-between mt-10 mb-20">
-                    <div className="w-[35%] h-100 rounded-2xl shadow-2xl">
+                    <div className="p-5 w-[35%] h-100 rounded-2xl shadow-2xl bg-[#E6D3C6]">
                         <p className="mt-2 text-center text-[22px] font-bold">Deck</p>
 
-                        <div className="w-[100%] h-90 grid grid-cols-4 grid-rows-2 pb-6">
+                        <div className="w-[100%] h-90 grid grid-cols-4 grid-rows-2 pt-3 pb-16">
                             {deck.map((card: any, index: number) => {
                                 return ( 
                                     <div key={card.id} className="flex justify-center items-center flex-col">
                                         {(card.evolutionLevel && card.evolutionLevel == 1 && index < 2) ?
-                                            <Image src={card.iconUrls.evolutionMedium} alt={"Image"} width={100} height={200} />:
-                                            <Image src={card.iconUrls.medium} alt={"Image"} width={100} height={200}/>}
+                                            <Image src={card.iconUrls.evolutionMedium} alt={"Image"} width={80} height={200} />:
+                                            <Image src={card.iconUrls.medium} alt={"Image"} width={80} height={200}/>}
                                         <p className={(card.level + 14 - card.maxLevel == 15) ? "font-extrabold": "font-medium"}>Level {card.level + 14 - card.maxLevel}</p>
                                     </div>
                                 )
@@ -113,7 +113,7 @@ export default async function PlayerPage({ playerId }: PlayerPageProps) {
                         </div>
                     </div>
 
-                    <div className="pt-5 w-[60%] h-100 rounded-2xl shadow-2xl">
+                    <div className="pt-5 w-[60%] h-100 rounded-2xl shadow-2xl bg-[#E6D3C6]">
                             <p className="mt-2 mb-2 text-center text-[22px] font-bold">Evolutions</p>
 
                             <div className="flex flex-wrap justify-center pl-3 pr-3">
