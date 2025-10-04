@@ -26,12 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`flex gap-x-20 h-screen flex-col md:flex-row md:overflow-hidden ${geistSans.variable} ${geistMono.variable} antialiased bg-[#f1e5da] text-[#023E3B]`}
+        className={`no-scrollbar w-[100%] pr-10 flex gap-x-20 h-screen flex-col md:flex-row md:overflow-hidden ${geistSans.variable} ${geistMono.variable} antialiased bg-[#f1e5da] text-[#023E3B]`}
       >
         <div className="w-full flex-none md:w-64">
           <Navbar/>
         </div>
-        <div className="flex-grow pl-px md:overflow-y-auto md:pl-20">{children}</div>
+        <div className="no-scrollbar flex-grow pl-px md:overflow-y-auto md:pl-10">{children}</div>
       </body>
     </html>
   );

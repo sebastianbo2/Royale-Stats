@@ -75,7 +75,7 @@ export default async function PlayerPage({ playerId }: PlayerPageProps) {
 
     return (
         <>
-            <div className="p-8 font-mono">
+            <div className="font-mono">
                 {/* <Image src={leagueImageId} width={100} height={300} alt="Image"/> */}
 
                 <div className="rounded-2xl p-5 shadow-xl border-opacity-10 bg-[#E6D3C6]">
@@ -126,6 +126,16 @@ export default async function PlayerPage({ playerId }: PlayerPageProps) {
                                 })}
                             </div>
                     </div>
+                </div>
+
+                <div className="w-[100%] h-[300px] bg-[#E6D3C6] rounded-4xl shadow-xl mb-15">
+                    <p className="pt-5 pb-5 text-center text-[22px] font-bold">Card Collection</p>
+                    
+                    {/* SUB CATEGORIES */}
+                    <div>
+
+                    </div>
+
                 </div>
 
                 {typeof data === "object" ? JSON.stringify(data): data}
