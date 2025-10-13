@@ -1,4 +1,7 @@
 import Image from "next/image";
+import PlayerDeck from "./playerComponents/playerDeck";
+import PlayerEvolutions from "./playerComponents/playerEvolutions";
+import CardCollection from "./playerComponents/cardCollection";
 
 type PlayerPageProps = {
     playerId: string;
@@ -29,9 +32,8 @@ const getPlayerInfo = async (id: string) => {
     
     // console.log(data.cards);
     // @ts-ignore
-    } catch (err) {
-        //@ts-ignore
-    console.error("Request failed:", err.message);
+    } catch (err: Error) {
+        console.error("Request failed:", err.message);
     }
 
     return info;
@@ -98,89 +100,12 @@ export default async function PlayerPage({ playerId }: PlayerPageProps) {
                 </div>
 
                 <div className="flex flex-row justify-between mt-10 mb-20">
-                    <div className="p-5 w-[35%] h-100 rounded-2xl shadow-2xl bg-[#E6D3C6]">
-                        <p className="mt-2 text-center text-[22px] font-bold">Deck</p>
+                    <PlayerDeck deck={data.currentDeck}/>
 
-                        <div className="w-[100%] h-90 grid grid-cols-4 grid-rows-2 pt-3 pb-16">
-                            {deck.map((card: any, index: number) => {
-                                return ( 
-                                    <div key={card.id} className="flex justify-center items-center flex-col">
-                                        {(card.evolutionLevel && card.evolutionLevel == 1 && index < 2) ?
-                                            <Image src={card.iconUrls.evolutionMedium} alt={"Image"} width={80} height={200} />:
-                                            <Image src={card.iconUrls.medium} alt={"Image"} width={80} height={200}/>}
-                                        <p className={(card.level + 14 - card.maxLevel == 15) ? "font-extrabold": "font-medium"}>Level {card.level + 14 - card.maxLevel}</p>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </div>
-
-                    <div className="pt-5 w-[60%] h-100 rounded-2xl shadow-2xl bg-[#E6D3C6]">
-                            <p className="mt-2 mb-2 text-center text-[22px] font-bold">Evolutions</p>
-
-                            <div className="flex flex-wrap justify-center pl-3 pr-3">
-                                {cards.filter((card: any) => card.maxEvolutionLevel).map((card:any) => {
-                                    return (
-                                        <div key={card.id}>
-                                            <Image className={(card.evolutionLevel) ? "": "grayscale"} src={card.iconUrls.evolutionMedium} alt={"Image"} width={60} height={80} />
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                    </div>
+                    <PlayerEvolutions cards={cards}/>
                 </div>
 
-                <div className="w-[100%] bg-[#E6D3C6] rounded-4xl shadow-xl mb-15 pl-5 pb-10">
-                    <p className="pt-5 pb-5 text-center text-[22px] font-bold">Card Collection</p>
-                    
-                    {/* SUB CATEGORIES */}
-                    <div>
-                        <p className="">Tower Cards</p>
-                        
-                        <div className="flex flex-row gap-3">
-                            {data.supportCards.map((tower: any) => {
-                                console.log(tower);
-
-                                return (
-                                    <div key={tower.id} className="">
-                                        <Image className="" src={tower.iconUrls.medium} alt={"Image"} width={60} height={80} />
-                                        <p className="text-center font-bold">{tower.level + (15 - tower.maxLevel - 1)}</p>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </div>
-
-                    <p className="mt-10">Level 15 - Elite</p>
-
-                    <div className="flex flex-row">
-                            {data.cards.filter((card: any) => card.level == card.maxLevel + 1).map((card: any) => {
-                                return (
-                                    <div key={card.id}>
-                                        <Image className="" src={card.iconUrls.medium} alt={"Image"} width={60} height={80} />
-                                    </div>
-                                )
-                            })}
-                    </div>
-
-                    {levels.map((level) => {
-                        return (
-                            <div key={level}>
-                                <p className="mt-10">Level {level}</p>
-
-                                <div className="flex flex-row flex-wrap">
-                                        {data.cards.filter((card: any) => card.level == card.maxLevel - (15 - level + 1)).map((card: any) => {
-                                            return (
-                                                <div key={card.id}>
-                                                    <Image className="" src={card.iconUrls.medium} alt="Image" width={60} height={80} />
-                                                </div>
-                                            )
-                                        })}
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
+                <CardCollection data={data}/>
 
                 {typeof data === "object" ? JSON.stringify(data): data}
             </div>
