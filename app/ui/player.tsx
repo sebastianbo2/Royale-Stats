@@ -39,29 +39,15 @@ const getPlayerInfo = async (id: string) => {
     return info;
 }
 
-const getLeagueImage = (trophies: number) => {
-  if (trophies >= 8000) return "https://cdn.statsroyale.com/images/arenas/league10.png";
-  if (trophies >= 7600) return "https://cdn.statsroyale.com/images/arenas/league9.png";
-  if (trophies >= 7300) return "https://cdn.statsroyale.com/images/arenas/league8.png";
-  if (trophies >= 7000) return "https://cdn.statsroyale.com/images/arenas/league7.png";
-  if (trophies >= 6600) return "https://cdn.statsroyale.com/images/arenas/league6.png";
-  if (trophies >= 6300) return "https://cdn.statsroyale.com/images/arenas/league5.png";
-  if (trophies >= 6000) return "https://cdn.statsroyale.com/images/arenas/league4.png";
-  if (trophies >= 5600) return "https://cdn.statsroyale.com/images/arenas/league3.png";
-  if (trophies >= 5300) return "https://cdn.statsroyale.com/images/arenas/league2.png";
-  if (trophies >= 5000) return "https://cdn.statsroyale.com/images/arenas/league1.png";
-  return null; // Below league range
-};
-
 
 export default async function PlayerPage({ playerId }: PlayerPageProps) {
     const data = await getPlayerInfo(playerId)
 
     if (!data) {
         return (
-            <>
-                Player not found
-            </>
+            <div className="text-[22px]">
+                Player not found {`-- ("${playerId}" is not a valid tag)`}
+            </div>
         )
     }
 
@@ -95,8 +81,19 @@ export default async function PlayerPage({ playerId }: PlayerPageProps) {
                         <Image src={`https://cdn.statsroyale.com/images/badges/${badgeId}.png`} alt="Image" width={50} height={80} className="inline-block"/>
                         <p className="ml-3 inline-block">{data.clan.name} {'['}{data.role.substring(0, 1).toUpperCase() + data.role.substring(1)}{']'}</p>
                     </div>
-
-
+             
+                    <div className="flex flex-row gap-3 mt-2">
+                        {data.supportCards.map((tower: any) => {
+                            console.log(tower);
+    
+                            return (
+                                <div key={tower.id} className="">
+                                    <Image className="" src={tower.iconUrls.medium} alt={"Image"} width={60} height={80} />
+                                    <p className="text-center font-bold">{tower.level + (15 - tower.maxLevel - 1)}</p>
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
 
                 <div className="flex flex-row justify-between mt-10 mb-20">
